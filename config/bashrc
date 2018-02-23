@@ -1,0 +1,26 @@
+source /etc/bash_completion.d/git
+
+export PS1='\t \u@\[\033[01;31m\]\h\[\033[0;32m\] \w\[\033[35m\]`__git_ps1`\[\033[01;34m\]$\[\033[00m\] '
+export CLICOLOR=1
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    #alias grep='grep --color=auto'
+    #alias fgrep='fgrep --color=auto'
+    #alias egrep='egrep --color=auto'
+fi
+
+alias l='ls -Alh'
+alias ll='ls -Alh'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias ..='cd ..'
+alias gl='git log'
+alias gg='git status'
+alias gco='git checkout'

@@ -1,0 +1,16 @@
+[core]
+        editor = vi
+	    excludesfile = .gitignore_global
+        quotepath = false
+        autocrlf = false
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = auto
+[push]
+        default = current
+[difftool]
+        prompt = false
+[mergetool]
+        prompt = false
