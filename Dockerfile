@@ -6,7 +6,7 @@ LABEL \
     image="lamp-5.3-dev" \
     vendor="feries" \
     license="GPLv3" \
-    build-date="2018-02-23"
+    build-date="2018-05-17"
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -15,7 +15,6 @@ ENV APACHE_RUN_USER "www-data"
 ENV APACHE_RUN_GROUP "www-data"
 ENV APACHE_CONF_DIR "/etc/apache2/conf.d"
 ENV APACHE_LOG_DIR "/var/log/apache2"
-ENV APACHE_CERTBASENAME "/etc/ssl/localcerts/apache"
 
 ADD config/90-ignore-release-date /etc/apt/apt.conf.d/
 ADD config/snapshot.list /etc/apt/sources.list.d/
@@ -55,7 +54,9 @@ RUN apt-get update && apt-get --force-yes -y install \
     libxml2-utils \
     imagemagick \
     libmagickwand-dev \
-    make
+    make \
+    build-essential \
+    g++
 
 # Install Imagemagick
 RUN pecl install -f imagick-3.1.2
@@ -135,7 +136,7 @@ RUN bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 RUN chsh -s /bin/zsh
 
 # Install NVM/Node/Grunt
-ENV NODE_VERSION "7.1"
+ENV NODE_VERSION "8.9.4"
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh # Replace shell with bash so we can source files
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash \
     && source /root/.nvm/nvm.sh \
