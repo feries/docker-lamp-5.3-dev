@@ -71,9 +71,6 @@ RUN apt-get --force-yes -y install yarn
 # Enable php5 modules and apache rewrite
 RUN a2enmod rewrite
 
-# Install ZSH
-RUN apt-get --force-yes -y install zsh
-
 # Clean APT
 RUN apt-get -y autoremove && apt-get clean && apt-get autoclean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -130,10 +127,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN rm /etc/localtime
 RUN ln -s /usr/share/zoneinfo/Europe/Rome /etc/localtime
 RUN "date"
-
-# Oh-My-Zsh
-RUN bash -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -q -O -)"
-RUN chsh -s /bin/zsh
 
 # Install NVM/Node/Grunt
 ENV NODE_VERSION "8.9.4"
