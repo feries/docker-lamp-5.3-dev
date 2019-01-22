@@ -61,6 +61,7 @@ RUN apt-get update && apt-get --force-yes -y install \
 # Install Imagemagick
 RUN pecl install -f imagick-3.1.2
 RUN echo "extension=imagick.so" >> /etc/php5/apache2/php.ini
+RUN echo "extension=imagick.so" >> /etc/php5/cli/php.ini
 
 # Install Yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
